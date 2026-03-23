@@ -3,6 +3,7 @@ import HeroSection from "@/components/sections/HeroSection";
 import BranchSelector from "@/components/sections/BranchSelector";
 import FeaturesSection from "@/components/sections/FeaturesSection";
 import ExpertsPreview from "@/components/sections/ExpertsPreview";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Stethoscope, Heart } from "lucide-react";
@@ -38,6 +39,7 @@ const fairies = [
 const Index = () => (
   <Layout>
     <HeroSection />
+    <SectionDivider />
 
     {/* Meet the Fairies */}
     <section className="container py-20">
@@ -74,10 +76,16 @@ const Index = () => (
         ))}
       </div>
     </section>
+    <SectionDivider />
 
     <BranchSelector />
+    <SectionDivider />
+
     <FeaturesSection />
+    <SectionDivider />
+
     <ExpertsPreview />
+    <SectionDivider />
 
     {/* Final CTA */}
     <section className="container py-20">

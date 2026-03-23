@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import CharacterMessage from "@/components/characters/CharacterMessage";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -39,6 +40,7 @@ const Specialists = () => (
     </section>
 
     <CharacterMessage character="analytia" message="Добро пожаловать в экспертный раздел! Я Аналития — помогу вам выбрать программу обучения и освоить AI-инструменты." className="container -mt-6 max-w-2xl" />
+    <SectionDivider />
 
     {/* Features */}
     <section className="container py-16">
@@ -59,6 +61,7 @@ const Specialists = () => (
         ))}
       </div>
     </section>
+    <SectionDivider />
 
     {/* Courses */}
     <section className="bg-muted/50 py-16">
@@ -85,6 +88,8 @@ const Specialists = () => (
       </div>
     </section>
 
+    <SectionDivider />
+
     {/* AI */}
     <section className="container py-16">
       <div className="bg-specialist-accent rounded-2xl p-8 md:p-12 border border-specialist/20">
@@ -102,6 +107,8 @@ const Specialists = () => (
       </div>
     </section>
 
+    <SectionDivider />
+
     {/* PRO Club */}
     <section className="bg-muted/50 py-16">
       <div className="container text-center max-w-3xl">
@@ -114,6 +121,8 @@ const Specialists = () => (
         <Link to="/pro-club"><Button size="lg" className="bg-specialist hover:bg-specialist/90 text-specialist-foreground gap-2">Подробнее о PRO Club <ArrowRight className="w-4 h-4" /></Button></Link>
       </div>
     </section>
+
+    <SectionDivider />
 
     {/* CTA */}
     <section className="container py-16 text-center">

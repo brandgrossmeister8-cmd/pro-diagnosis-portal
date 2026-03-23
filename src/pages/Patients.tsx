@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import CharacterMessage from "@/components/characters/CharacterMessage";
+import SectionDivider from "@/components/ui/SectionDivider";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -37,6 +38,7 @@ const Patients = () => (
     </section>
 
     <CharacterMessage character="aurelia" message="Привет! Я Аурелия 🌸 Помогу вам разобраться в ваших анализах простым и понятным языком." className="container -mt-6 max-w-2xl" />
+    <SectionDivider />
 
     {/* What you get */}
     <section className="container py-16">
@@ -58,6 +60,8 @@ const Patients = () => (
       </div>
     </section>
 
+    <SectionDivider />
+
     {/* Popular topics */}
     <section className="bg-muted/50 py-16">
       <div className="container">
@@ -71,6 +75,8 @@ const Patients = () => (
         </div>
       </div>
     </section>
+
+    <SectionDivider />
 
     {/* Disclaimer */}
     <section className="container py-16">
