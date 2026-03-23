@@ -63,7 +63,7 @@ const Index = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.15 }}
-            className={`${fairy.bgColor} rounded-2xl p-6 border ${fairy.color}/20 text-center`}
+            className="rounded-2xl p-6 text-center"
           >
             <img
               src={fairy.img}
