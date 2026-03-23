@@ -7,7 +7,7 @@ import ExpertsPreview from "@/components/sections/ExpertsPreview";
 import CharacterMessage from "@/components/characters/CharacterMessage";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Brain, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const Index = () => (
   <Layout>
