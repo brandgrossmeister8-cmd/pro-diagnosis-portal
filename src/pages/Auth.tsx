@@ -2,13 +2,11 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Badge } from "@/components/ui/badge";
 import CharacterMessage from "@/components/characters/CharacterMessage";
 
 const Auth = () => {
   const [params] = useSearchParams();
   const [tab, setTab] = useState(params.get("tab") === "register" ? "register" : "login");
-  const [role, setRole] = useState(params.get("role") || "specialist");
 
   return (
     <Layout>
@@ -24,17 +22,9 @@ const Auth = () => {
           </div>
 
           {tab === "register" && (
-            <div className="mb-6">
-              <label className="text-sm font-medium text-foreground mb-2 block">Я являюсь:</label>
-              <div className="flex gap-2">
-                <button onClick={() => setRole("specialist")} className={`flex-1 py-2 px-3 text-sm rounded-lg border transition-colors ${role === "specialist" ? "border-specialist bg-specialist/10 text-specialist" : "border-border text-muted-foreground"}`}>
-                  Специалист / Врач
-                </button>
-                <button onClick={() => setRole("patient")} className={`flex-1 py-2 px-3 text-sm rounded-lg border transition-colors ${role === "patient" ? "border-patient bg-patient/10 text-patient" : "border-border text-muted-foreground"}`}>
-                  Пациент
-                </button>
-              </div>
-            </div>
+            <p className="text-xs text-muted-foreground bg-specialist/5 border border-specialist/20 rounded-lg p-3 mb-6">
+              Регистрация доступна для специалистов и врачей. Пациентам регистрация не требуется — все материалы доступны без аккаунта.
+            </p>
           )}
 
           <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -74,8 +64,8 @@ const Auth = () => {
         </div>
 
         <CharacterMessage
-          character="analisa"
-          message={tab === "login" ? "Рада вас снова видеть! Войдите, чтобы продолжить обучение." : "Добро пожаловать! Регистрация откроет доступ к личному кабинету и сохранению прогресса."}
+          character="analytia"
+          message={tab === "login" ? "Рада вас снова видеть! Войдите, чтобы продолжить обучение." : "Регистрация откроет доступ к курсам, AI-расшифровке анализов и личному кабинету специалиста."}
           className="mt-6"
           size="sm"
         />

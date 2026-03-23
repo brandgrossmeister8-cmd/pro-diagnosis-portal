@@ -27,8 +27,7 @@ const Patients = () => (
             Узнайте, что означают ваши результаты, без сложной терминологии.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link to="/free-course"><Button size="lg" className="bg-patient hover:bg-patient/90 text-patient-foreground gap-2"><BookOpen className="w-5 h-5" />Азбука анализов — бесплатно</Button></Link>
-            <Link to="/knowledge/patients"><Button size="lg" variant="outline" className="gap-2"><Search className="w-5 h-5" />База знаний</Button></Link>
+            <Link to="/knowledge/patients"><Button size="lg" className="bg-patient hover:bg-patient/90 text-patient-foreground gap-2"><Search className="w-5 h-5" />База знаний</Button></Link>
           </div>
         </div>
         <div className="flex justify-center">
@@ -73,26 +72,8 @@ const Patients = () => (
       </div>
     </section>
 
-    {/* Free course */}
-    <section className="container py-16">
-      <div className="bg-accent rounded-2xl p-8 md:p-12">
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="flex-1">
-            <Badge className="bg-primary/10 text-primary border-0 mb-3">Бесплатно</Badge>
-            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">Азбука лабораторных анализов</h2>
-            <p className="text-muted-foreground mb-6">
-              Откройте для себя мир лабораторных исследований. 8 уроков, которые помогут понимать
-              результаты анализов и общаться с врачом на одном языке.
-            </p>
-            <Link to="/free-course"><Button size="lg" className="gap-2">Начать бесплатно <ArrowRight className="w-4 h-4" /></Button></Link>
-          </div>
-          <CharacterMessage character="aurelia" message="Этот курс — отличное начало! Я буду рядом на каждом уроке 📚" size="sm" className="md:max-w-xs" />
-        </div>
-      </div>
-    </section>
-
     {/* Disclaimer */}
-    <section className="container pb-16">
+    <section className="container py-16">
       <div className="bg-muted rounded-xl p-6 text-center">
         <Shield className="w-6 h-6 text-muted-foreground mx-auto mb-2" />
         <p className="text-sm text-muted-foreground max-w-2xl mx-auto">
@@ -100,13 +81,6 @@ const Patients = () => (
           консультацию квалифицированного врача. При любых вопросах о здоровье обратитесь к специалисту.
         </p>
       </div>
-    </section>
-
-    {/* CTA */}
-    <section className="container pb-16 text-center">
-      <h2 className="font-display text-3xl font-bold text-foreground mb-4">Начните изучение</h2>
-      <p className="text-muted-foreground mb-8 max-w-xl mx-auto">Зарегистрируйтесь для сохранения прогресса и доступа к избранным материалам</p>
-      <Link to="/auth?tab=register&role=patient"><Button size="lg" className="bg-patient hover:bg-patient/90 text-patient-foreground">Зарегистрироваться</Button></Link>
     </section>
   </Layout>
 );

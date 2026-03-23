@@ -11,6 +11,7 @@ const navItems = [
     href: "/specialists",
     children: [
       { label: "Курсы", href: "/courses" },
+      { label: "Азбука анализов", href: "/free-course" },
       { label: "PRO Club", href: "/pro-club" },
       { label: "AI-расшифровка", href: "/ai-analysis" },
       { label: "База знаний", href: "/knowledge/specialists" },
@@ -20,7 +21,6 @@ const navItems = [
     label: "Пациентам",
     href: "/patients",
     children: [
-      { label: "Азбука анализов", href: "/free-course" },
       { label: "База знаний", href: "/knowledge/patients" },
     ],
   },
@@ -91,9 +91,6 @@ const Header = () => {
               Войти
             </Button>
           </Link>
-          <Link to="/auth?tab=register">
-            <Button size="sm" className="hidden sm:inline-flex">Регистрация</Button>
-          </Link>
           <button className="lg:hidden p-2" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -134,9 +131,6 @@ const Header = () => {
               <div className="flex gap-2 mt-3 px-3">
                 <Link to="/auth" className="flex-1" onClick={() => setMobileOpen(false)}>
                   <Button variant="outline" size="sm" className="w-full">Войти</Button>
-                </Link>
-                <Link to="/auth?tab=register" className="flex-1" onClick={() => setMobileOpen(false)}>
-                  <Button size="sm" className="w-full">Регистрация</Button>
                 </Link>
               </div>
             </nav>
