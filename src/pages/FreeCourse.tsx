@@ -30,8 +30,8 @@ const FreeCourse = () => (
             Азбука лабораторных анализов
           </h1>
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            Откройте для себя мир лабораторной диагностики. Курс подходит и для специалистов как точка входа,
-            и для пациентов, которые хотят понимать свои результаты.
+           Базовый курс для специалистов — точка входа в лабораторную диагностику.
+            Систематизируйте знания и подготовьтесь к углублённым программам.
           </p>
           <div className="flex flex-wrap gap-3">
             <Button size="lg" className="gap-2"><BookOpen className="w-5 h-5" />Начать обучение</Button>
@@ -64,10 +64,10 @@ const FreeCourse = () => (
           <h2 className="font-display text-2xl font-bold text-foreground mb-4">Для кого</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              "Пациенты, которые хотят понимать свои анализы",
+              "Врачи, начинающие работу с лабораторной диагностикой",
               "Студенты медицинских вузов",
-              "Начинающие врачи",
-              "Все, кто интересуется своим здоровьем",
+              "Клинические ординаторы",
+              "Специалисты смежных направлений",
             ].map((t, i) => (
               <div key={i} className="flex items-start gap-2">
                 <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
