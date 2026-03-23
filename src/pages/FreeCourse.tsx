@@ -64,10 +64,10 @@ const FreeCourse = () => (
           <h2 className="font-display text-2xl font-bold text-foreground mb-4">Для кого</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              "Пациенты, которые хотят понимать свои анализы",
+              "Врачи, начинающие работу с лабораторной диагностикой",
               "Студенты медицинских вузов",
-              "Начинающие врачи",
-              "Все, кто интересуется своим здоровьем",
+              "Клинические ординаторы",
+              "Специалисты смежных направлений",
             ].map((t, i) => (
               <div key={i} className="flex items-start gap-2">
                 <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
