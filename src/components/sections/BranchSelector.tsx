@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Stethoscope, Heart, ArrowRight, BookOpen, Brain, Shield, Sparkles } from "lucide-react";
+import { Stethoscope, Heart, ArrowRight, BookOpen, Brain, Shield, Sparkles, Search } from "lucide-react";
 import analytiaImg from "@/assets/analytia.png";
 import aureliaImg from "@/assets/aurelia.png";
 
@@ -26,10 +26,10 @@ const BranchSelector = () => (
             </div>
             <ul className="space-y-3 mb-6">
               {[
-                { icon: BookOpen, text: "Курсы по интерпретации анализов" },
+                { icon: BookOpen, text: "Курсы и программы обучения" },
                 { icon: Brain, text: "AI-расшифровка анализов" },
                 { icon: Shield, text: "PRO Club — профессиональное сообщество" },
-                { icon: Sparkles, text: "Экспертная база знаний и кейсы" },
+                { icon: Sparkles, text: "Азбука лабораторных анализов" },
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-foreground">
                   <item.icon className="w-4 h-4 text-specialist flex-shrink-0" />
@@ -58,7 +58,7 @@ const BranchSelector = () => (
             <ul className="space-y-3 mb-6">
               {[
                 { icon: BookOpen, text: "Понятные материалы об анализах" },
-                { icon: Heart, text: "Азбука лабораторных анализов — бесплатно" },
+                { icon: Search, text: "База знаний простым языком" },
                 { icon: Sparkles, text: "Простые объяснения сложных тем" },
                 { icon: Shield, text: "Проверенная экспертная информация" },
               ].map((item, i) => (
