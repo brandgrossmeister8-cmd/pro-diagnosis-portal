@@ -7,7 +7,7 @@ import ExpertsPreview from "@/components/sections/ExpertsPreview";
 import CharacterMessage from "@/components/characters/CharacterMessage";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Brain, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const Index = () => (
   <Layout>
@@ -39,28 +39,6 @@ const Index = () => (
       </div>
     </section>
 
-    {/* AI section */}
-    <section className="container py-16">
-      <div className="bg-specialist-accent rounded-2xl p-8 md:p-12 border border-specialist/20">
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-specialist flex items-center justify-center flex-shrink-0">
-            <Brain className="w-8 h-8 text-specialist-foreground" />
-          </div>
-          <div className="flex-1">
-            <h2 className="font-display text-2xl font-bold text-foreground mb-2">AI-расшифровка анализов</h2>
-            <p className="text-muted-foreground mb-4">
-              Интеллектуальный инструмент для специалистов. Загрузите результаты анализов и получите
-              образовательную интерпретацию с выделением отклонений и клинических взаимосвязей.
-            </p>
-            <Link to="/ai-analysis">
-              <Button className="bg-specialist hover:bg-specialist/90 text-specialist-foreground gap-2">
-                Подробнее об AI-сервисе <ArrowRight className="w-4 h-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <ExpertsPreview />
 

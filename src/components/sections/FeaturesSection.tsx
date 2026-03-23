@@ -1,12 +1,12 @@
-import { BookOpen, Brain, Users, Shield, Award, Sparkles } from "lucide-react";
+import { BookOpen, Shield, Sparkles, Heart, FileText, HelpCircle } from "lucide-react";
 
 const features = [
-  { icon: BookOpen, title: "Экспертные курсы", desc: "Программы обучения от ведущих специалистов" },
-  { icon: Brain, title: "AI-расшифровка", desc: "Интеллектуальный анализ лабораторных данных" },
-  { icon: Users, title: "PRO Club", desc: "Профессиональное сообщество врачей" },
+  { icon: BookOpen, title: "Образовательные курсы", desc: "Открытые программы для понимания анализов" },
+  { icon: Heart, title: "Для пациентов", desc: "Понятные материалы о лабораторных исследованиях" },
   { icon: Shield, title: "Доказательный подход", desc: "Только проверенная экспертная информация" },
-  { icon: Award, title: "Сертификация", desc: "Подтверждение компетенций после обучения" },
-  { icon: Sparkles, title: "Просветительство", desc: "Понятные материалы для пациентов" },
+  { icon: Sparkles, title: "Просветительство", desc: "Простые объяснения сложных медицинских тем" },
+  { icon: FileText, title: "База знаний", desc: "Статьи и материалы о показателях анализов" },
+  { icon: HelpCircle, title: "FAQ и поддержка", desc: "Ответы на популярные вопросы об анализах" },
 ];
 
 const FeaturesSection = () => (
@@ -15,7 +15,7 @@ const FeaturesSection = () => (
       <div className="text-center mb-12">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Возможности портала</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Всё для профессионального роста специалистов и грамотности пациентов
+          Всё для грамотного понимания лабораторной диагностики
         </p>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
