@@ -68,7 +68,7 @@ const Index = () => (
             <img
               src={fairy.img}
               alt={fairy.name}
-              className={`w-32 h-32 mx-auto mb-4 rounded-full border-4 ${fairy.color}/30 object-cover character-float`}
+              className="w-32 h-32 mx-auto mb-4 object-contain character-float"
               loading="lazy"
               width={128}
               height={128}
