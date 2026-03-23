@@ -59,7 +59,7 @@
     --shadow-lg: 0 8px 30px hsl(200 25% 10% / 0.1);
     --shadow-glow: 0 0 40px hsl(174 62% 38% / 0.15);
 
-    --font-display: 'Playfair Display', Georgia, serif;
+    --font-display: 'Inter', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
 
     --sidebar-background: 0 0% 98%;
