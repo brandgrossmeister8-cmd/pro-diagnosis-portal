@@ -16,8 +16,6 @@ const fairies = [
     name: "Аналиса",
     role: "Главный проводник портала",
     img: analisaImg,
-    color: "border-primary",
-    bgColor: "bg-accent",
     description:
       "Я — старшая из трёх лабораторных фей. Встречаю всех на портале, помогаю найти нужный раздел и направляю к моим сёстрам. Я знаю всё о нашем портале!",
   },
@@ -25,8 +23,6 @@ const fairies = [
     name: "Аурелия",
     role: "Помощница для пациентов",
     img: aureliaImg,
-    color: "border-patient",
-    bgColor: "bg-patient-accent",
     description:
       "Я помогу вам разобраться в анализах простым языком. Объясню, что означают показатели, расскажу о популярных исследованиях и буду рядом на каждом шаге.",
   },
@@ -34,8 +30,6 @@ const fairies = [
     name: "Аналития",
     role: "Помощница для специалистов",
     img: analytiaImg,
-    color: "border-specialist",
-    bgColor: "bg-specialist-accent",
     description:
       "Я сопровождаю врачей и специалистов. Помогу выбрать курс, освоить AI-инструменты расшифровки анализов и развить клиническое мышление.",
   },
