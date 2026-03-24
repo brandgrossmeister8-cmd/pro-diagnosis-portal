@@ -8,7 +8,7 @@ const formulas = [
   "HDL", "LDL", "HCO₃⁻", "K⁺", "Na⁺",
 ];
 
-const MedicalIcon = ({ type, className }: { type: string; className?: string }) => {
+const MedicalIcon = ({ type, className, style }: { type: string; className?: string; style?: React.CSSProperties }) => {
   switch (type) {
     case "helix":
       return (
