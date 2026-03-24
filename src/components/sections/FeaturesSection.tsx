@@ -1,4 +1,5 @@
 import { BookOpen, Brain, Users, Shield, Heart, Sparkles, Search, Award } from "lucide-react";
+import MedicalBackground from "@/components/decorations/MedicalBackground";
 
 const specialistFeatures = [
   { icon: BookOpen, title: "Курсы и программы", desc: "От базовых до углублённых программ по лабораторной диагностике" },
@@ -15,8 +16,9 @@ const patientFeatures = [
 ];
 
 const FeaturesSection = () => (
-  <section className="bg-muted/50 py-20">
-    <div className="container">
+  <section className="relative bg-muted/50 py-20 overflow-hidden">
+    <MedicalBackground density="light" />
+    <div className="container relative">
       <div className="text-center mb-12">
         <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-3">Возможности портала</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">

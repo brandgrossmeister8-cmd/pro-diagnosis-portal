@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Stethoscope, Heart } from "lucide-react";
 import analisaImg from "@/assets/analisa.png";
 import heroBg from "@/assets/hero-bg.jpg";
+import MedicalBackground from "@/components/decorations/MedicalBackground";
 
 const HeroSection = () => (
   <section className="relative overflow-hidden">
@@ -12,6 +13,7 @@ const HeroSection = () => (
       style={{ backgroundImage: `url(${heroBg})` }}
     />
     <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
+    <MedicalBackground density="medium" />
     <div className="container relative pt-16 pb-20 lg:pt-24 lg:pb-28">
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         <motion.div
