@@ -44,7 +44,7 @@ const About = () => (
         </ul>
 
         <h3 className="font-display text-lg font-semibold text-foreground">Наши помощники</h3>
-        <p>Три фирменных персонажа сопровождают пользователей по порталу:</p>
+        <p>Три наших помощника сопровождают пользователей по порталу:</p>
       </div>
 
       <div className="space-y-4 mt-6 mb-8">
@@ -55,7 +55,7 @@ const About = () => (
 
       <div className="flex flex-wrap gap-3">
         <Link to="/specialists"><Button className="bg-specialist hover:bg-specialist/90 text-specialist-foreground gap-2">Для специалистов <ArrowRight className="w-4 h-4" /></Button></Link>
-        <Link to="/patients"><Button variant="outline" className="border-patient text-patient gap-2">Для пациентов <ArrowRight className="w-4 h-4" /></Button></Link>
+        <Link to="/patients"><Button className="bg-gradient-patient hover:opacity-90 text-white gap-2">Для пациентов <ArrowRight className="w-4 h-4" /></Button></Link>
       </div>
     </section>
   </Layout>

@@ -87,11 +87,6 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link to="/auth">
-            <Button size="sm" className="hidden sm:inline-flex bg-gradient-hero hover:opacity-90 text-white font-semibold shadow-md shadow-primary/15">
-              Войти
-            </Button>
-          </Link>
           <button className="lg:hidden p-2 text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -128,11 +123,6 @@ const Header = () => {
                   ))}
                 </div>
               ))}
-              <div className="flex gap-2 mt-2 px-3">
-                <Link to="/auth" className="flex-1" onClick={() => setMobileOpen(false)}>
-                  <Button size="sm" className="w-full bg-gradient-hero text-white">Войти</Button>
-                </Link>
-              </div>
             </nav>
           </motion.div>
         )}

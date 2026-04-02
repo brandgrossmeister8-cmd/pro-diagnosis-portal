@@ -121,7 +121,7 @@ const HeroSection = () => {
                 </Button>
               </Link>
               <Link to="/patients">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto gap-2 border-patient/50 text-patient hover:bg-patient/10 hover:border-patient transition-all hover:scale-[1.02]">
+                <Button size="lg" className="w-full sm:w-auto gap-2 bg-gradient-patient hover:opacity-90 text-white font-semibold shadow-md shadow-patient/15 transition-all hover:shadow-patient/25 hover:scale-[1.02]">
                   <Heart className="w-5 h-5" />
                   Я пациент
                 </Button>
