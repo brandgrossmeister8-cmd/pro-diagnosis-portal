@@ -150,7 +150,7 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/specialists">
-                <Button size="lg" className="bg-white text-[hsl(220,20%,4%)] hover:bg-white/90 w-full sm:w-auto gap-2 font-bold shadow-lg hover:scale-[1.02] transition-transform">
+                <Button size="lg" className="bg-white text-foreground hover:bg-white/90 w-full sm:w-auto gap-2 font-bold shadow-lg hover:scale-[1.02] transition-transform">
                   <Stethoscope className="w-5 h-5" />
                   Я специалист
                   <ArrowRight className="w-4 h-4" />

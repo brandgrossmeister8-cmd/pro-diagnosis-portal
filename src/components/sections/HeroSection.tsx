@@ -50,13 +50,13 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 
 const FloatingOrbs = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/10 blur-[100px] animated-gradient" />
-    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-[hsl(210,65%,55%)]/10 blur-[120px] animated-gradient" style={{ animationDelay: "-3s" }} />
-    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[hsl(195,60%,45%)]/5 blur-[150px]" />
+    <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/8 blur-[100px] animated-gradient" />
+    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-specialist/8 blur-[120px] animated-gradient" style={{ animationDelay: "-3s" }} />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[150px]" />
     {Array.from({ length: 20 }).map((_, i) => (
       <motion.div
         key={i}
-        className="absolute w-1 h-1 rounded-full bg-primary/40"
+        className="absolute w-1 h-1 rounded-full bg-primary/30"
         style={{ left: `${10 + (i * 4.3) % 80}%`, top: `${10 + (i * 7.1) % 80}%` }}
         animate={{ y: [0, -30, 0], opacity: [0.2, 0.6, 0.2], scale: [1, 1.5, 1] }}
         transition={{ duration: 3 + (i % 3), repeat: Infinity, delay: i * 0.3 }}
@@ -115,7 +115,7 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
               <Link to="/specialists">
-                <Button size="lg" className="w-full sm:w-auto gap-2 bg-gradient-specialist hover:opacity-90 text-white font-semibold shadow-lg shadow-specialist/20 transition-all hover:shadow-specialist/40 hover:scale-[1.02]">
+                <Button size="lg" className="w-full sm:w-auto gap-2 bg-gradient-specialist hover:opacity-90 text-white font-semibold shadow-md shadow-specialist/15 transition-all hover:shadow-specialist/25 hover:scale-[1.02]">
                   <Stethoscope className="w-5 h-5" />
                   Я специалист
                 </Button>

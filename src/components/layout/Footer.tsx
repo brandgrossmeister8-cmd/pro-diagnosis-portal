@@ -6,7 +6,7 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center shadow-lg shadow-primary/20">
+            <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center shadow-md shadow-primary/15">
               <span className="text-white font-bold text-sm">ПД</span>
             </div>
             <span className="font-display font-black text-lg">ПРО <span className="text-primary">диагностику</span></span>

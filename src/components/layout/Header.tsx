@@ -38,7 +38,7 @@ const Header = () => {
     <header className="sticky top-0 z-50 glass-strong">
       <div className="container flex h-14 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center shadow-lg shadow-primary/20">
+          <div className="w-8 h-8 rounded-lg bg-gradient-hero flex items-center justify-center shadow-md shadow-primary/15">
             <span className="text-white font-bold text-sm">ПД</span>
           </div>
           <span className="font-display font-black text-lg text-foreground hidden sm:block">
@@ -59,7 +59,7 @@ const Header = () => {
                 className={`px-3 py-1.5 text-sm font-medium rounded-md transition-all flex items-center gap-1 ${
                   location.pathname === item.href
                     ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 }`}
               >
                 {item.label}
@@ -75,7 +75,7 @@ const Header = () => {
                     <Link
                       key={child.href}
                       to={child.href}
-                      className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-white/5 transition-colors"
+                      className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                     >
                       {child.label}
                     </Link>
@@ -88,7 +88,7 @@ const Header = () => {
 
         <div className="flex items-center gap-2">
           <Link to="/auth">
-            <Button size="sm" className="hidden sm:inline-flex bg-gradient-hero hover:opacity-90 text-white font-semibold shadow-lg shadow-primary/20">
+            <Button size="sm" className="hidden sm:inline-flex bg-gradient-hero hover:opacity-90 text-white font-semibold shadow-md shadow-primary/15">
               Войти
             </Button>
           </Link>
@@ -112,7 +112,7 @@ const Header = () => {
                   <Link
                     to={item.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block px-3 py-2 text-sm font-medium rounded-md text-foreground hover:bg-white/5"
+                    className="block px-3 py-2 text-sm font-medium rounded-md text-foreground hover:bg-muted"
                   >
                     {item.label}
                   </Link>
