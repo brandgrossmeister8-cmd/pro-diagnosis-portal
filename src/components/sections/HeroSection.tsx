@@ -1,75 +1,202 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { Stethoscope, Heart } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Stethoscope, Heart, Sparkles, ArrowDown } from "lucide-react";
 import analisaImg from "@/assets/analisa.png";
-import heroBg from "@/assets/hero-bg.jpg";
 import MedicalBackground from "@/components/decorations/MedicalBackground";
+import { useRef, useEffect, useState } from "react";
 
-const HeroSection = () => (
-  <section className="relative overflow-hidden">
-    <div
-      className="absolute inset-0 bg-cover bg-center opacity-15"
-      style={{ backgroundImage: `url(${heroBg})` }}
-    />
-    <div className="absolute inset-0 bg-gradient-to-b from-background via-background/90 to-background" />
-    <MedicalBackground density="medium" />
-    <div className="container relative pt-16 pb-20 lg:pt-24 lg:pb-28">
-      <div className="grid lg:grid-cols-2 gap-12 items-center">
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="inline-block px-3 py-1 rounded-full bg-accent text-accent-foreground text-xs font-medium mb-4">
-            Образовательный медицинский портал
-          </span>
-          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-            <span className="text-gradient-hero">ПРО</span> диагностику
-          </h1>
-          <p className="text-lg text-muted-foreground mb-8 max-w-lg leading-relaxed">
-            Экспертный портал по лабораторной диагностике. Обучение, интерпретация анализов,
-            AI-инструменты и просветительские материалы для врачей и пациентов.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link to="/specialists">
-              <Button size="lg" className="w-full sm:w-auto gap-2 bg-specialist hover:bg-specialist/90 text-specialist-foreground">
-                <Stethoscope className="w-5 h-5" />
-                Я специалист
-              </Button>
-            </Link>
-            <Link to="/patients">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto gap-2 border-patient text-patient hover:bg-patient/10">
-                <Heart className="w-5 h-5" />
-                Я пациент
-              </Button>
-            </Link>
-          </div>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center"
-        >
-          <div className="relative">
-            <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl scale-75" />
-            <img
-              src={analisaImg}
-              alt="Аналиса — ваш проводник по порталу"
-              className="relative character-float w-64 h-64 lg:w-80 lg:h-80 object-contain"
-              width={320}
-              height={320}
-            />
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-card border border-border rounded-xl px-4 py-2 shadow-md">
-              <p className="text-sm text-foreground font-medium">Привет! Я Аналиса 👋</p>
-              <p className="text-xs text-muted-foreground">Помогу найти то, что вам нужно</p>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  </section>
+const stats = [
+  { value: 2400, suffix: "+", label: "Студентов" },
+  { value: 50, suffix: "+", label: "Курсов" },
+  { value: 15, suffix: "", label: "Экспертов" },
+  { value: 98, suffix: "%", label: "Довольных" },
+];
+
+function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !started) setStarted(true); },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [started]);
+
+  useEffect(() => {
+    if (!started) return;
+    const duration = 1500;
+    const steps = 40;
+    const increment = value / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+    return () => clearInterval(timer);
+  }, [started, value]);
+
+  return <span ref={ref} className="tabular-nums">{count.toLocaleString()}{suffix}</span>;
+}
+
+const FloatingOrbs = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/10 blur-[100px] animated-gradient" />
+    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-[hsl(210,65%,55%)]/10 blur-[120px] animated-gradient" style={{ animationDelay: "-3s" }} />
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[hsl(195,60%,45%)]/5 blur-[150px]" />
+    {Array.from({ length: 20 }).map((_, i) => (
+      <motion.div
+        key={i}
+        className="absolute w-1 h-1 rounded-full bg-primary/40"
+        style={{ left: `${10 + (i * 4.3) % 80}%`, top: `${10 + (i * 7.1) % 80}%` }}
+        animate={{ y: [0, -30, 0], opacity: [0.2, 0.6, 0.2], scale: [1, 1.5, 1] }}
+        transition={{ duration: 3 + (i % 3), repeat: Infinity, delay: i * 0.3 }}
+      />
+    ))}
+  </div>
 );
+
+const HeroSection = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  return (
+    <section ref={ref} className="relative min-h-[90vh] flex items-center overflow-hidden">
+      <motion.div className="absolute inset-0 grid-pattern opacity-30" style={{ y: bgY }} />
+      <MedicalBackground density="heavy" />
+      <FloatingOrbs />
+
+      <motion.div className="container relative z-10 py-12 lg:py-16" style={{ y: textY, opacity }}>
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-medium text-primary mb-5"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              Образовательный медицинский портал
+            </motion.div>
+
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-[1.05] mb-5">
+              <span className="text-gradient-hero">ПРО</span>{" "}
+              <span className="relative">
+                диагностику
+                <motion.span
+                  className="absolute -bottom-2 left-0 h-1 bg-gradient-hero rounded-full"
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                />
+              </span>
+            </h1>
+
+            <p className="text-base text-muted-foreground mb-8 max-w-lg leading-relaxed">
+              Экспертный портал по лабораторной диагностике. Обучение, AI-инструменты
+              и просветительские материалы для врачей и пациентов.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 mb-10">
+              <Link to="/specialists">
+                <Button size="lg" className="w-full sm:w-auto gap-2 bg-gradient-specialist hover:opacity-90 text-white font-semibold shadow-lg shadow-specialist/20 transition-all hover:shadow-specialist/40 hover:scale-[1.02]">
+                  <Stethoscope className="w-5 h-5" />
+                  Я специалист
+                </Button>
+              </Link>
+              <Link to="/patients">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto gap-2 border-patient/50 text-patient hover:bg-patient/10 hover:border-patient transition-all hover:scale-[1.02]">
+                  <Heart className="w-5 h-5" />
+                  Я пациент
+                </Button>
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-4 gap-4">
+              {stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="font-display text-2xl md:text-3xl font-black text-foreground">
+                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-0.5">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="flex justify-center relative"
+          >
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-72 h-72 lg:w-96 lg:h-96 rounded-full border border-primary/20 pulse-glow" />
+              <div className="absolute w-56 h-56 lg:w-72 lg:h-72 rounded-full border border-primary/10" />
+            </div>
+
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="orbit">
+                <div className="w-8 h-8 rounded-lg bg-gradient-specialist flex items-center justify-center shadow-lg">
+                  <Stethoscope className="w-4 h-4 text-white" />
+                </div>
+              </div>
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="orbit-reverse">
+                <div className="w-8 h-8 rounded-lg bg-gradient-patient flex items-center justify-center shadow-lg">
+                  <Heart className="w-4 h-4 text-white" />
+                </div>
+              </div>
+            </div>
+
+            <div className="relative z-10">
+              <img
+                src={analisaImg}
+                alt="Аналиса — ваш проводник по порталу"
+                className="character-float w-56 h-56 lg:w-72 lg:h-72 object-contain drop-shadow-2xl"
+                width={288}
+                height={288}
+              />
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 }}
+                className="absolute -bottom-4 left-1/2 -translate-x-1/2 glass rounded-xl px-5 py-3 shadow-lg"
+              >
+                <p className="text-sm text-foreground font-semibold whitespace-nowrap">Привет! Я Аналиса</p>
+                <p className="text-xs text-muted-foreground">Помогу найти то, что вам нужно</p>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      >
+        <ArrowDown className="w-5 h-5 text-muted-foreground/50" />
+      </motion.div>
+    </section>
+  );
+};
 
 export default HeroSection;

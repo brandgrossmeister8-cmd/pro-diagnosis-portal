@@ -1,11 +1,23 @@
 import { motion } from "framer-motion";
 
 const formulas = [
+  // Биохимия крови
   "H₂O", "NaCl", "C₆H₁₂O₆", "Fe²⁺", "Ca²⁺", "HbA1c",
   "TSH", "T₃", "T₄", "ALT", "AST", "CRP",
   "WBC", "RBC", "PLT", "MCH", "MCV", "ESR",
   "IgG", "IgM", "pH 7.4", "pO₂", "pCO₂",
   "HDL", "LDL", "HCO₃⁻", "K⁺", "Na⁺",
+  // Расширенные лабораторные
+  "GGT", "ALP", "ЛДГ", "КФК", "СОЭ",
+  "Hb", "Ht", "MCHC", "RDW", "MPV",
+  "D-димер", "ПТИ", "АЧТВ", "МНО",
+  "Креатинин", "Мочевина", "Билирубин",
+  "Глюкоза", "HbA₁c", "Инсулин",
+  "Ферритин", "Трансферрин", "ОЖСС",
+  "СРБ", "РФ", "АНЦА", "АНА",
+  "α-амилаза", "Липаза", "Трипсин",
+  "Кортизол", "АКТГ", "ТТГ", "Т₃св", "Т₄св",
+  "Mg²⁺", "Zn²⁺", "Cu²⁺", "PO₄³⁻", "Cl⁻",
 ];
 
 const SvgIcons: Record<string, JSX.Element> = {
@@ -55,27 +67,50 @@ const SvgIcons: Record<string, JSX.Element> = {
       <circle cx="18" cy="52" r="1.5" />
     </svg>
   ),
+  bloodCell: (
+    <svg viewBox="0 0 50 50" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <ellipse cx="25" cy="25" rx="20" ry="14" />
+      <ellipse cx="25" cy="25" rx="8" ry="5" />
+    </svg>
+  ),
+  pipette: (
+    <svg viewBox="0 0 30 70" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M12 15 L12 55 Q12 60 15 60 Q18 60 18 55 L18 15" />
+      <path d="M10 15 Q15 8 20 15" />
+      <line x1="12" y1="45" x2="18" y2="45" strokeDasharray="2 2" />
+      <circle cx="15" cy="52" r="1.5" />
+    </svg>
+  ),
+  beaker: (
+    <svg viewBox="0 0 50 60" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M10 5 L10 45 Q10 55 25 55 Q40 55 40 45 L40 5" />
+      <line x1="10" y1="15" x2="15" y2="15" strokeWidth="1" />
+      <line x1="10" y1="25" x2="15" y2="25" strokeWidth="1" />
+      <line x1="10" y1="35" x2="15" y2="35" strokeWidth="1" />
+      <path d="M12 38 Q25 34 38 38" strokeDasharray="2 2" />
+    </svg>
+  ),
 };
 
 const iconKeys = Object.keys(SvgIcons);
 
 interface MedicalBackgroundProps {
-  density?: "light" | "medium";
+  density?: "light" | "medium" | "heavy";
   className?: string;
 }
 
 const MedicalBackground = ({ density = "light", className = "" }: MedicalBackgroundProps) => {
-  const count = density === "light" ? 14 : 22;
+  const count = density === "light" ? 18 : density === "medium" ? 30 : 42;
   const items = Array.from({ length: count }, (_, i) => ({
     id: i,
     formula: formulas[i % formulas.length],
     icon: iconKeys[i % iconKeys.length],
-    x: `${5 + (i * 37) % 90}%`,
-    y: `${5 + (i * 23) % 85}%`,
-    delay: i * 0.4,
-    duration: 18 + (i % 5) * 4,
-    rotation: (i * 45) % 360,
-    size: 18 + (i % 4) * 8,
+    x: `${3 + (i * 31) % 94}%`,
+    y: `${3 + (i * 19) % 94}%`,
+    delay: i * 0.3,
+    duration: 15 + (i % 6) * 3,
+    rotation: (i * 37) % 360,
+    size: 20 + (i % 5) * 6,
   }));
 
   return (
@@ -91,8 +126,8 @@ const MedicalBackground = ({ density = "light", className = "" }: MedicalBackgro
           }}
           initial={{ opacity: 0 }}
           animate={{
-            opacity: [0, 0.08, 0.04, 0.08, 0],
-            y: [0, -15, 0, 15, 0],
+            opacity: [0, 0.12, 0.06, 0.12, 0],
+            y: [0, -12, 0, 12, 0],
           }}
           transition={{
             duration: item.duration,
@@ -101,10 +136,10 @@ const MedicalBackground = ({ density = "light", className = "" }: MedicalBackgro
             ease: "easeInOut",
           }}
         >
-          {item.id % 3 === 0 ? (
+          {item.id % 2 === 0 ? (
             <span
-              className="font-body select-none block whitespace-nowrap"
-              style={{ fontSize: `${item.size * 0.7}px` }}
+              className="font-body font-medium select-none block whitespace-nowrap"
+              style={{ fontSize: `${item.size * 0.65}px` }}
             >
               {item.formula}
             </span>
