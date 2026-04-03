@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useAuth } from "@/hooks/useAuth";
 
 const navItems = [
   { label: "Главная", href: "/" },
@@ -33,6 +34,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
+  const { auth } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 glass-strong">
@@ -87,6 +89,17 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-2">
+          {auth?.isSpecialist ? (
+            <Link to="/dashboard">
+              <Button size="sm" className="hidden sm:inline-flex bg-gradient-specialist hover:opacity-90 text-white font-semibold gap-2 shadow-md shadow-specialist/15">
+                <User className="w-3.5 h-3.5" />
+                {auth.profile.name.split(" ")[0] || "Кабинет"}
+              </Button>
+              <button className="sm:hidden w-8 h-8 rounded-full bg-gradient-specialist flex items-center justify-center text-white text-xs font-bold">
+                {auth.profile.name ? auth.profile.name[0].toUpperCase() : "К"}
+              </button>
+            </Link>
+          ) : null}
           <button className="lg:hidden p-2 text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -123,6 +136,15 @@ const Header = () => {
                   ))}
                 </div>
               ))}
+              {auth?.isSpecialist && (
+                <Link
+                  to="/dashboard"
+                  onClick={() => setMobileOpen(false)}
+                  className="block px-3 py-2 text-sm font-semibold rounded-md text-specialist hover:bg-specialist/5 mt-2 border-t border-border pt-3"
+                >
+                  Личный кабинет
+                </Link>
+              )}
             </nav>
           </motion.div>
         )}

@@ -20,6 +20,7 @@ import Auth from "./pages/Auth";
 import Privacy from "./pages/Privacy";
 import CookiePolicy from "./pages/CookiePolicy";
 import Contacts from "./pages/Contacts";
+import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ const App = () => (
             <Route path="/ai-analysis" element={<SpecialistRoute><AIAnalysis /></SpecialistRoute>} />
             <Route path="/knowledge/specialists" element={<SpecialistRoute><KnowledgeBase /></SpecialistRoute>} />
             <Route path="/pro-club" element={<SpecialistRoute><ProClub /></SpecialistRoute>} />
+            <Route path="/dashboard" element={<SpecialistRoute><Dashboard /></SpecialistRoute>} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -17,7 +17,7 @@ const Auth = () => {
   const [agreed, setAgreed] = useState(false);
   const [error, setError] = useState("");
 
-  const from = (location.state as { from?: string })?.from || "/specialists";
+  const from = (location.state as { from?: string })?.from || "/dashboard";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
