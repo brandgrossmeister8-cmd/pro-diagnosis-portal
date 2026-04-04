@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Stethoscope, Heart, Sparkles, ArrowDown, Brain, BookOpen, Shield } from "lucide-react";
 import analisaImg from "@/assets/analisa.png";
+import chemistryBg from "@/assets/chemistry-bg.webp";
 import MedicalBackground from "@/components/decorations/MedicalBackground";
 import { useRef, useEffect, useState } from "react";
 
@@ -52,9 +53,12 @@ const HeroSection = () => {
 
   return (
     <section ref={ref} className="relative min-h-[70vh] md:min-h-[90vh] flex items-center overflow-hidden">
-      {/* Vivid gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(170,65%,40%,0.06)] via-transparent to-[hsl(215,80%,50%,0.06)]" />
-      <motion.div className="absolute inset-0 grid-pattern opacity-20" style={{ y: bgY }} />
+      {/* Chemistry background photo */}
+      <motion.div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${chemistryBg})`, y: bgY, opacity: 0.07 }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(170,65%,40%,0.08)] via-background/80 to-[hsl(215,80%,50%,0.08)]" />
       <MedicalBackground density="heavy" />
 
       {/* Bright floating orbs */}
