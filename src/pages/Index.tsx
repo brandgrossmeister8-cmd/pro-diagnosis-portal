@@ -5,7 +5,7 @@ import FeaturesSection from "@/components/sections/FeaturesSection";
 import ExpertsPreview from "@/components/sections/ExpertsPreview";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Stethoscope, Heart, ArrowRight, Zap } from "lucide-react";
+import { Stethoscope, Heart, ArrowRight, Zap, Gift, Star, TrendingUp, Award } from "lucide-react";
 import MedicalBackground from "@/components/decorations/MedicalBackground";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -126,6 +126,73 @@ const Index = () => {
       <FeaturesSection />
 
       <ExpertsPreview />
+
+      {/* Loyalty program */}
+      <section className="relative py-14 overflow-hidden">
+        <div className="absolute inset-0 dot-pattern opacity-15" />
+        <div className="container relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="font-display text-3xl md:text-4xl font-black text-foreground mb-2">
+              Программа <span className="text-gradient-gold">лояльности</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm">
+              Зарабатывайте баллы за активность на портале и обменивайте их на скидки, курсы и персональные консультации
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-10">
+            {[
+              { icon: Zap, name: "Стажёр", desc: "Регистрация и первые шаги", color: "text-muted-foreground", bg: "bg-muted" },
+              { icon: Star, name: "Практик", desc: "500+ баллов, скидки на курсы", color: "text-specialist", bg: "bg-specialist/10" },
+              { icon: TrendingUp, name: "Эксперт", desc: "1 500+ баллов, AI-доступ", color: "text-primary", bg: "bg-primary/10" },
+              { icon: Award, name: "Мастер", desc: "3 500+ баллов, VIP-привилегии", color: "text-gold", bg: "bg-gold/10" },
+            ].map((level, i) => (
+              <motion.div
+                key={level.name}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="glass rounded-xl p-5 text-center transition-all hover:scale-[1.03]"
+              >
+                <div className={`w-12 h-12 mx-auto rounded-xl ${level.bg} flex items-center justify-center mb-3`}>
+                  <level.icon className={`w-6 h-6 ${level.color}`} />
+                </div>
+                <h4 className={`font-display font-bold ${level.color}`}>{level.name}</h4>
+                <p className="text-xs text-muted-foreground mt-1">{level.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {[
+              { text: "Проходите курсы", points: "до 500 баллов", icon: Gift },
+              { text: "Приглашайте коллег", points: "150 баллов", icon: Heart },
+              { text: "Размещайте рекламу", points: "100 баллов", icon: Star },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex items-center gap-3 glass rounded-lg p-4"
+              >
+                <item.icon className="w-5 h-5 text-gold flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-semibold text-foreground">{item.text}</p>
+                  <p className="text-xs text-gold">+{item.points}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Final CTA */}
       <motion.section

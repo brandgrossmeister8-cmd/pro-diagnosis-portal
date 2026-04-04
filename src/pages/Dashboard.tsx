@@ -8,9 +8,10 @@ import {
   User, Mail, Phone, Briefcase, MapPin, GraduationCap, Award,
   Stethoscope, FileText, Plus, Trash2, Eye, EyeOff, LogOut,
   Save, Megaphone, Pencil, X, Link as LinkIcon, Image,
+  Gift, Star, TrendingUp, Zap, CheckCircle,
 } from "lucide-react";
 
-type Tab = "profile" | "ads" | "courses";
+type Tab = "profile" | "ads" | "loyalty" | "courses";
 
 const specializations = [
   "Терапия", "Клиническая биохимия", "Гематология", "Иммунология",
@@ -235,6 +236,133 @@ function AdCard({ ad, onToggle, onRemove }: { ad: DoctorAd; onToggle: () => void
   );
 }
 
+const loyaltyLevels = [
+  { name: "Стажёр", min: 0, max: 500, color: "bg-muted", textColor: "text-muted-foreground", icon: Zap },
+  { name: "Практик", min: 500, max: 1500, color: "bg-specialist/10", textColor: "text-specialist", icon: Star },
+  { name: "Эксперт", min: 1500, max: 3500, color: "bg-primary/10", textColor: "text-primary", icon: TrendingUp },
+  { name: "Мастер", min: 3500, max: Infinity, color: "bg-gold/10", textColor: "text-gold", icon: Award },
+];
+
+const loyaltyActions = [
+  { action: "Регистрация на портале", points: 100, done: true },
+  { action: "Заполнение профиля", points: 50, done: false },
+  { action: "Прохождение бесплатного курса", points: 200, done: false },
+  { action: "Покупка платного курса", points: 500, done: false },
+  { action: "Приглашение коллеги", points: 150, done: false },
+  { action: "Публикация рекламного объявления", points: 100, done: false },
+  { action: "Вступление в PRO Club", points: 300, done: false },
+  { action: "Отзыв о курсе", points: 75, done: false },
+];
+
+const loyaltyRewards = [
+  { name: "Скидка 10% на любой курс", cost: 500, icon: Gift },
+  { name: "Бесплатный доступ к AI-расшифровке на 1 месяц", cost: 1000, icon: Zap },
+  { name: "Приоритетная поддержка экспертов", cost: 1500, icon: Star },
+  { name: "Скидка 30% на PRO Club", cost: 2000, icon: Award },
+  { name: "Персональная консультация эксперта", cost: 3000, icon: Stethoscope },
+  { name: "Бесплатный курс на выбор", cost: 5000, icon: GraduationCap },
+];
+
+function LoyaltyTab() {
+  const points = 100; // Starting points (registration bonus)
+  const currentLevel = loyaltyLevels.find((l) => points >= l.min && points < l.max) || loyaltyLevels[0];
+  const nextLevel = loyaltyLevels[loyaltyLevels.indexOf(currentLevel) + 1];
+  const progress = nextLevel ? ((points - currentLevel.min) / (nextLevel.min - currentLevel.min)) * 100 : 100;
+
+  return (
+    <div className="space-y-8">
+      {/* Current status */}
+      <div className="bg-card border border-border rounded-xl p-6">
+        <div className="flex items-center gap-4 mb-4">
+          <div className={`w-14 h-14 rounded-xl ${currentLevel.color} flex items-center justify-center`}>
+            <currentLevel.icon className={`w-7 h-7 ${currentLevel.textColor}`} />
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Ваш уровень</p>
+            <h3 className={`font-display text-xl font-black ${currentLevel.textColor}`}>{currentLevel.name}</h3>
+          </div>
+          <div className="ml-auto text-right">
+            <p className="text-sm text-muted-foreground">Баллы</p>
+            <p className="font-display text-2xl font-black text-foreground">{points}</p>
+          </div>
+        </div>
+        {nextLevel && (
+          <div>
+            <div className="flex justify-between text-xs text-muted-foreground mb-1.5">
+              <span>{currentLevel.name}</span>
+              <span>{nextLevel.name} — {nextLevel.min} баллов</span>
+            </div>
+            <div className="h-2.5 bg-muted rounded-full overflow-hidden">
+              <div className="h-full bg-gradient-hero rounded-full transition-all" style={{ width: `${progress}%` }} />
+            </div>
+            <p className="text-xs text-muted-foreground mt-1.5">Ещё {nextLevel.min - points} баллов до следующего уровня</p>
+          </div>
+        )}
+      </div>
+
+      {/* How to earn */}
+      <div>
+        <h3 className="font-display font-bold text-foreground mb-4 flex items-center gap-2">
+          <TrendingUp className="w-4 h-4 text-primary" /> Как заработать баллы
+        </h3>
+        <div className="space-y-2">
+          {loyaltyActions.map((a, i) => (
+            <div key={i} className={`flex items-center gap-3 p-3 rounded-lg border ${a.done ? "bg-primary/5 border-primary/20" : "bg-card border-border"}`}>
+              <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${a.done ? "bg-primary text-white" : "bg-muted text-muted-foreground"}`}>
+                {a.done ? <CheckCircle className="w-4 h-4" /> : <span className="text-xs font-bold">{i + 1}</span>}
+              </div>
+              <span className={`text-sm flex-1 ${a.done ? "text-foreground line-through opacity-60" : "text-foreground"}`}>{a.action}</span>
+              <Badge className={`border-0 ${a.done ? "bg-primary/10 text-primary" : "bg-gold/10 text-gold"}`}>+{a.points}</Badge>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Rewards catalog */}
+      <div>
+        <h3 className="font-display font-bold text-foreground mb-4 flex items-center gap-2">
+          <Gift className="w-4 h-4 text-gold" /> Каталог наград
+        </h3>
+        <div className="grid md:grid-cols-2 gap-3">
+          {loyaltyRewards.map((r, i) => {
+            const canAfford = points >= r.cost;
+            return (
+              <div key={i} className={`flex items-center gap-3 p-4 rounded-xl border transition-all ${canAfford ? "bg-card border-gold/30 hover:shadow-md" : "bg-muted/30 border-border opacity-70"}`}>
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${canAfford ? "bg-gold/10" : "bg-muted"}`}>
+                  <r.icon className={`w-5 h-5 ${canAfford ? "text-gold" : "text-muted-foreground"}`} />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-foreground">{r.name}</p>
+                  <p className="text-xs text-muted-foreground">{r.cost} баллов</p>
+                </div>
+                <Button size="sm" variant="outline" disabled={!canAfford} className={canAfford ? "border-gold text-gold hover:bg-gold/10" : ""}>
+                  {canAfford ? "Получить" : "Недоступно"}
+                </Button>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Levels */}
+      <div>
+        <h3 className="font-display font-bold text-foreground mb-4 flex items-center gap-2">
+          <Star className="w-4 h-4 text-specialist" /> Уровни программы
+        </h3>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {loyaltyLevels.map((l) => (
+            <div key={l.name} className={`text-center p-4 rounded-xl border ${points >= l.min ? "border-primary/30 bg-card" : "border-border bg-muted/30 opacity-60"}`}>
+              <l.icon className={`w-8 h-8 mx-auto mb-2 ${l.textColor}`} />
+              <p className={`font-display font-bold text-sm ${l.textColor}`}>{l.name}</p>
+              <p className="text-xs text-muted-foreground mt-0.5">{l.min === 0 ? "0" : l.min}+ баллов</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function CoursesTab() {
   return (
     <div className="space-y-6">
@@ -320,6 +448,7 @@ const Dashboard = () => {
 
   const tabs: { id: Tab; label: string; icon: React.ReactNode }[] = [
     { id: "profile", label: "Профиль", icon: <User className="w-4 h-4" /> },
+    { id: "loyalty", label: "Лояльность", icon: <Gift className="w-4 h-4" /> },
     { id: "ads", label: "Реклама", icon: <Megaphone className="w-4 h-4" /> },
     { id: "courses", label: "Мои курсы", icon: <GraduationCap className="w-4 h-4" /> },
   ];
@@ -360,6 +489,7 @@ const Dashboard = () => {
         {/* Content */}
         <div className="max-w-4xl">
           {tab === "profile" && <ProfileTab />}
+          {tab === "loyalty" && <LoyaltyTab />}
           {tab === "ads" && <AdsTab />}
           {tab === "courses" && <CoursesTab />}
         </div>
