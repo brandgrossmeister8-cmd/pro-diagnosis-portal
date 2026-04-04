@@ -20,12 +20,12 @@ const ExpertsPreview = () => (
         viewport={{ once: true }}
         className="text-center mb-8"
       >
-        <h2 className="font-display text-3xl md:text-4xl font-black text-foreground mb-2">
+        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black text-foreground mb-2">
           Наши <span className="text-gradient-gold">эксперты</span>
         </h2>
         <p className="text-muted-foreground text-sm">Ведущие специалисты в области лабораторной диагностики</p>
       </motion.div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
         {experts.map((e, i) => (
           <motion.div
             key={e.id}

@@ -93,7 +93,7 @@ const Header = () => {
             <Link to="/dashboard">
               <Button size="sm" className="hidden sm:inline-flex bg-gradient-specialist hover:opacity-90 text-white font-semibold gap-2 shadow-md shadow-specialist/15">
                 <User className="w-3.5 h-3.5" />
-                {auth.profile.name.split(" ")[0] || "Кабинет"}
+                <span className="truncate max-w-[80px]">{auth.profile.name.split(" ")[0] || "Кабинет"}</span>
               </Button>
               <button className="sm:hidden w-8 h-8 rounded-full bg-gradient-specialist flex items-center justify-center text-white text-xs font-bold">
                 {auth.profile.name ? auth.profile.name[0].toUpperCase() : "К"}

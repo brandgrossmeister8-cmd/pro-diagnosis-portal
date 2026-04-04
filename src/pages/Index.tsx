@@ -77,7 +77,7 @@ const Index = () => {
       <MarqueeBar />
 
       {/* Meet the Fairies */}
-      <section className="relative container py-14 overflow-hidden">
+      <section className="relative container py-10 md:py-14 overflow-hidden">
         <MedicalBackground density="medium" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -85,14 +85,14 @@ const Index = () => {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h2 className="font-display text-3xl md:text-4xl font-black text-foreground mb-2">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black text-foreground mb-2">
             Ваши <span className="text-gradient-hero">лабораторные феи</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-sm">
             Три сестры-феи помогут вам на каждом шаге
           </p>
         </motion.div>
-        <div className="grid md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 max-w-6xl mx-auto">
           {fairies.map((fairy, i) => (
             <motion.div
               key={fairy.name}
@@ -137,7 +137,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-10"
           >
-            <h2 className="font-display text-3xl md:text-4xl font-black text-foreground mb-2">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black text-foreground mb-2">
               Программа <span className="text-gradient-gold">лояльности</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-sm">
@@ -145,7 +145,7 @@ const Index = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-4 gap-4 max-w-5xl mx-auto mb-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto mb-8 md:mb-10">
             {[
               { icon: Zap, name: "Стажёр", desc: "Регистрация и первые шаги", color: "text-muted-foreground", bg: "bg-muted" },
               { icon: Star, name: "Практик", desc: "500+ баллов, скидки на курсы", color: "text-specialist", bg: "bg-specialist/10" },
@@ -169,7 +169,7 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
             {[
               { text: "Проходите курсы", points: "до 500 баллов", icon: Gift },
               { text: "Приглашайте коллег", points: "150 баллов", icon: Heart },
@@ -198,17 +198,17 @@ const Index = () => {
       <motion.section
         ref={ctaRef}
         style={{ scale: ctaScale, opacity: ctaOpacity }}
-        className="container py-14"
+        className="container py-10 md:py-14"
       >
         <div className="relative rounded-3xl overflow-hidden">
           <div className="absolute inset-0 bg-gradient-hero opacity-90" />
           <div className="absolute inset-0 grid-pattern opacity-10" />
-          <div className="relative text-center px-6 py-14">
+          <div className="relative text-center px-4 sm:px-6 py-10 md:py-14">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-display text-3xl md:text-4xl font-black text-white mb-3"
+              className="font-display text-2xl sm:text-3xl md:text-4xl font-black text-white mb-3"
             >
               Начните свой путь в мире диагностики
             </motion.h2>

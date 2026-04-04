@@ -73,7 +73,7 @@ const HeroSection = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section ref={ref} className="relative min-h-[70vh] md:min-h-[90vh] flex items-center overflow-hidden">
       <motion.div className="absolute inset-0 grid-pattern opacity-30" style={{ y: bgY }} />
       <MedicalBackground density="heavy" />
       <FloatingOrbs />
@@ -95,7 +95,7 @@ const HeroSection = () => {
               Образовательный медицинский портал
             </motion.div>
 
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-black text-foreground leading-[1.05] mb-5">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-foreground leading-[1.05] mb-4 md:mb-5">
               <span className="text-gradient-hero">ПРО</span>{" "}
               <span className="relative">
                 диагностику
@@ -108,12 +108,12 @@ const HeroSection = () => {
               </span>
             </h1>
 
-            <p className="text-base text-muted-foreground mb-8 max-w-lg leading-relaxed">
+            <p className="text-sm sm:text-base text-muted-foreground mb-6 md:mb-8 max-w-lg leading-relaxed">
               Экспертный портал по лабораторной диагностике. Обучение, AI-инструменты
               и просветительские материалы для врачей и пациентов.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 mb-10">
+            <div className="flex flex-col sm:flex-row gap-3 mb-6 md:mb-10">
               <Link to="/specialists">
                 <Button size="lg" className="w-full sm:w-auto gap-2 bg-gradient-specialist hover:opacity-90 text-white font-semibold shadow-md shadow-specialist/15 transition-all hover:shadow-specialist/25 hover:scale-[1.02]">
                   <Stethoscope className="w-5 h-5" />
@@ -128,10 +128,10 @@ const HeroSection = () => {
               </Link>
             </div>
 
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <div className="font-display text-2xl md:text-3xl font-black text-foreground">
+                  <div className="font-display text-xl sm:text-2xl md:text-3xl font-black text-foreground">
                     <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                   </div>
                   <div className="text-xs text-muted-foreground mt-0.5">{stat.label}</div>
@@ -147,18 +147,18 @@ const HeroSection = () => {
             className="flex justify-center relative"
           >
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-72 h-72 lg:w-96 lg:h-96 rounded-full border border-primary/20 pulse-glow" />
-              <div className="absolute w-56 h-56 lg:w-72 lg:h-72 rounded-full border border-primary/10" />
+              <div className="w-48 sm:w-64 md:w-72 lg:w-96 h-48 sm:h-64 md:h-72 lg:h-96 rounded-full border border-primary/20 pulse-glow" />
+              <div className="absolute w-36 sm:w-48 md:w-56 lg:w-72 h-36 sm:h-48 md:h-56 lg:h-72 rounded-full border border-primary/10" />
             </div>
 
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center hidden sm:flex">
               <div className="orbit">
                 <div className="w-8 h-8 rounded-lg bg-gradient-specialist flex items-center justify-center shadow-lg">
                   <Stethoscope className="w-4 h-4 text-white" />
                 </div>
               </div>
             </div>
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center hidden sm:flex">
               <div className="orbit-reverse">
                 <div className="w-8 h-8 rounded-lg bg-gradient-patient flex items-center justify-center shadow-lg">
                   <Heart className="w-4 h-4 text-white" />
@@ -170,7 +170,7 @@ const HeroSection = () => {
               <img
                 src={analisaImg}
                 alt="Аналиса — ваш проводник по порталу"
-                className="character-float w-56 h-56 lg:w-72 lg:h-72 object-contain drop-shadow-2xl"
+                className="character-float w-40 sm:w-48 md:w-56 lg:w-72 h-40 sm:h-48 md:h-56 lg:h-72 object-contain drop-shadow-2xl"
                 width={288}
                 height={288}
               />

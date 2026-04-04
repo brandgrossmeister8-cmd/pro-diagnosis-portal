@@ -5,7 +5,7 @@ import analytiaImg from "@/assets/analytia.png";
 import aureliaImg from "@/assets/aurelia.png";
 
 const BranchSelector = () => (
-  <section className="relative container py-14 overflow-hidden">
+  <section className="relative container py-10 md:py-14 overflow-hidden">
     <div className="relative">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -13,7 +13,7 @@ const BranchSelector = () => (
         viewport={{ once: true }}
         className="text-center mb-8"
       >
-        <h2 className="font-display text-3xl md:text-4xl font-black text-foreground mb-2">
+        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black text-foreground mb-2">
           Выберите свой <span className="text-gradient-hero">маршрут</span>
         </h2>
         <p className="text-muted-foreground max-w-xl mx-auto text-sm">
@@ -30,7 +30,7 @@ const BranchSelector = () => (
           transition={{ duration: 0.25 }}
         >
           <Link to="/specialists" className="block group">
-            <div className="relative rounded-2xl glass p-6 transition-all h-full overflow-hidden hover:shadow-[0_0_40px_hsl(210,65%,55%,0.15)]">
+            <div className="relative rounded-2xl glass p-4 sm:p-6 transition-all h-full overflow-hidden hover:shadow-[0_0_40px_hsl(210,65%,55%,0.15)]">
               <div className="absolute top-0 right-0 w-32 h-32 bg-specialist/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
               <div className="flex items-center gap-4 mb-5 relative">
                 <img src={analytiaImg} alt="Аналития" className="w-14 h-14 object-contain" loading="lazy" />
@@ -70,7 +70,7 @@ const BranchSelector = () => (
           transition={{ duration: 0.25 }}
         >
           <Link to="/patients" className="block group">
-            <div className="relative rounded-2xl glass p-6 transition-all h-full overflow-hidden hover:shadow-[0_0_40px_hsl(350,60%,62%,0.15)]">
+            <div className="relative rounded-2xl glass p-4 sm:p-6 transition-all h-full overflow-hidden hover:shadow-[0_0_40px_hsl(350,60%,62%,0.15)]">
               <div className="absolute top-0 right-0 w-32 h-32 bg-patient/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
               <div className="flex items-center gap-4 mb-5 relative">
                 <img src={aureliaImg} alt="Аурелия" className="w-14 h-14 object-contain" loading="lazy" />

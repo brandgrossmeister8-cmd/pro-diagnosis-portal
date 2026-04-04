@@ -45,7 +45,7 @@ const FeatureCard = ({ icon: Icon, title, desc, index, variant }: {
 };
 
 const FeaturesSection = () => (
-  <section className="relative py-14 overflow-hidden">
+  <section className="relative py-10 md:py-14 overflow-hidden">
     <MedicalBackground density="light" />
     <div className="absolute inset-0 dot-pattern opacity-20" />
     <div className="container relative">
@@ -55,7 +55,7 @@ const FeaturesSection = () => (
         viewport={{ once: true }}
         className="text-center mb-10"
       >
-        <h2 className="font-display text-3xl md:text-4xl font-black text-foreground mb-2">
+        <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-black text-foreground mb-2">
           Возможности <span className="text-gradient-hero">портала</span>
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto text-sm">

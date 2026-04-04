@@ -458,7 +458,7 @@ const Dashboard = () => {
       <section className="container py-10">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="font-display text-2xl md:text-3xl font-black text-foreground">Личный кабинет</h1>
+            <h1 className="font-display text-xl sm:text-2xl md:text-3xl font-black text-foreground">Личный кабинет</h1>
             <p className="text-sm text-muted-foreground mt-1">Управление профилем и рекламными объявлениями</p>
           </div>
           <Button variant="outline" onClick={handleLogout} className="gap-2 text-sm">
@@ -467,12 +467,12 @@ const Dashboard = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1 mb-8 bg-muted p-1 rounded-lg w-fit">
+        <div className="flex gap-1 mb-6 md:mb-8 bg-muted p-1 rounded-lg w-full sm:w-fit overflow-x-auto">
           {tabs.map((t) => (
             <button
               key={t.id}
               onClick={() => setTab(t.id)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium transition-all whitespace-nowrap ${
                 tab === t.id
                   ? "bg-card text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
